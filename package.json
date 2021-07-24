@@ -10,7 +10,7 @@
     "jest": "^27.0.6"
   },
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll --verbose --coverage"
   },
   "keywords": [],
   "author": "",

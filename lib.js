@@ -12,7 +12,7 @@ module.exports.registerUser = function(username) {
   return { id: new Date().getTime(), username: username }
 }
 
-// order = {customerId: string, totalPrice: number}
+// order = {customerId: string, totalPrice: number, email:}
 module.exports.applyDiscount = function(order) { 
   const customer = db.getCustomerSync(order.customerId);
 
@@ -20,13 +20,9 @@ module.exports.applyDiscount = function(order) {
     order.totalPrice *= 0.9; 
 }
 
-// order = {customerId: string, totalPrice: number}
+// order = {customerId: string, totalPrice: number, email: }
 module.exports.notifyCustomer = async function(order) { 
   const customer = await db.getCustomer(order.customerId);
 
   mail.send(customer.email, 'Your order was placed successfully.');
-}
-
-module.exports.notifyCustomer = async function(order) { 
-  const customer = await db.getCustomerReject(order.customerId);
 }
